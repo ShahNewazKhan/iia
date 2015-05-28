@@ -45,4 +45,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+  alert('State Param:' + $stateParams);
+  console.log($stateParams);
+})
+
+.controller('SearchCtrler', function($scope) {
+  alert('searching');
 });
+
+
