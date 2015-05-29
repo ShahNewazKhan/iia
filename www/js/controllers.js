@@ -54,6 +54,7 @@ angular.module('starter.controllers', [])
    
    var nickname = 'iamon';
    
+   // Insert into table repo 
    var insert = function() {
         var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
         $cordovaSQLite.execute(db, query, [repo, nickname]).then(function(res) {
@@ -65,6 +66,7 @@ angular.module('starter.controllers', [])
     
    insert();
    
+   // Select from db table repo
    var select = function(nickname) {
         var query = "SELECT repo, nickname FROM repo WHERE nickname = ?";
         $cordovaSQLite.execute(db, query, [nickname]).then(function(res) {
