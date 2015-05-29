@@ -45,12 +45,40 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-  alert('State Param:' + $stateParams);
-  console.log($stateParams);
+ 
 })
 
-.controller('SearchCtrler', function($scope) {
-  alert('searching');
+.controller('SearchCtrler', function($scope, $cordovaSQLite) {
+   
+   var repo = 'master branch';
+   
+   var nickname = 'iamon';
+   
+   var insert = function() {
+        var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
+        $cordovaSQLite.execute(db, query, [repo, nickname]).then(function(res) {
+            console.log("INSERT ID -> " + res.insertId);
+        }, function (err) {
+            console.error(err);
+        });
+    };
+    
+   insert();
+   
+   var select = function(nickname) {
+        var query = "SELECT repo, nickname FROM repo WHERE nickname = ?";
+        $cordovaSQLite.execute(db, query, [nickname]).then(function(res) {
+            if(res.rows.length > 0) {
+                console.log("SELECTED -> " + res.rows.item(0).repo + " " + res.rows.item(0).nickname);
+            } else {
+                console.log("No results found");
+            }
+        }, function (err) {
+            console.error(err);
+        });
+    };
+    
+    select(nickname);
 });
 
 
