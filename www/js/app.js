@@ -36,12 +36,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('app.addRepo', {
+    url: "/addRepo",
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html",
-        controller: 'SearchCtrler'
+        templateUrl: "templates/addRepo.html",
+        controller: 'AddRepoCtrl'
       }
     }
   })

@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
  
 })
 
-.controller('SearchCtrler', function($scope, $cordovaSQLite) {
+.controller('AddRepoCtrl', function($scope, $cordovaSQLite) {
    
    var repo = 'master branch';
    
@@ -80,7 +80,7 @@ angular.module('starter.controllers', [])
         });
     };
     
-    select(nickname);
+    //select(nickname);
 });
 
 
