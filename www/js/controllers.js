@@ -64,7 +64,7 @@ angular.module('starter.controllers', [])
         });
     };
     
-   insert();
+   //insert();
    
    // Select from db table repo
    var select = function(nickname) {
