@@ -54,6 +54,8 @@ angular.module('starter.controllers', [])
    
    var nickname = 'iamon';
    
+   $scope.repoName = 'Repo Name';
+   
    // Insert into table repo 
    var insert = function() {
         var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
@@ -64,23 +66,6 @@ angular.module('starter.controllers', [])
         });
     };
     
-   //insert();
-   
-   // Select from db table repo
-   var select = function(nickname) {
-        var query = "SELECT repo, nickname FROM repo WHERE nickname = ?";
-        $cordovaSQLite.execute(db, query, [nickname]).then(function(res) {
-            if(res.rows.length > 0) {
-                console.log("SELECTED -> " + res.rows.item(0).repo + " " + res.rows.item(0).nickname);
-            } else {
-                console.log("No results found");
-            }
-        }, function (err) {
-            console.error(err);
-        });
-    };
-    
-    //select(nickname);
 });
 
 
