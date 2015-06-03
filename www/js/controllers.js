@@ -48,7 +48,7 @@ angular.module('starter.controllers', [])
  
 })
 
-.controller('AddRepoCtrl', function($scope, $cordovaSQLite, $cordovaBarcodeScanner) {
+.controller('AddRepoCtrl', function($scope, $cordovaSQLite, $cordovaBarcodeScanner, $cordovaDialogs) {
    
    var scanned = false;
    $scope.remoteURL = 'Remote URL';
@@ -59,20 +59,19 @@ angular.module('starter.controllers', [])
             
             scanned = true;
             $scope.remoteURL = imageData.text;
-            console.log("Barcode Format -> " + imageData.format);
-            console.log("Cancelled -> " + imageData.cancelled);
-            
+            $cordovaDialogs.beep(1);            
         }, function(error) {
             console.log("An error happened -> " + error);
         });
     };
     
-    $scope.promptUrl = function(){
-      $cordovaDialogs.prompt('msg', 'title', ['btn 1','btn 2'], 'default text')
+    $scope.promptRepoName = function(){
+      $cordovaDialogs.prompt('Enter a name', 'Repo Name', ['Ok','Cancel'], '')
       .then(function(result) {
-        var input = result.input1;
+        if (result.input1 != '')
+          $scope.repoName = result.input1;
         // no button = 0, 'OK' = 1, 'Cancel' = 2
-        var btnIndex = result.buttonIndex;
+        console.log('Button pressed: ' + result.buttonIndex);
       });
     };
    
