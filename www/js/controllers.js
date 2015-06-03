@@ -48,23 +48,34 @@ angular.module('starter.controllers', [])
  
 })
 
-.controller('AddRepoCtrl', function($scope, $cordovaSQLite) {
+.controller('AddRepoCtrl', function($scope, $cordovaSQLite, $cordovaBarcodeScanner) {
    
-   var repo = 'master branch';
-   
-   var nickname = 'iamon';
-   
+   var scanned = false;
+   $scope.remoteURL = 'Remote URL';
    $scope.repoName = 'Repo Name';
    
-   // Insert into table repo 
-   var insert = function() {
-        var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
-        $cordovaSQLite.execute(db, query, [repo, nickname]).then(function(res) {
-            console.log("INSERT ID -> " + res.insertId);
-        }, function (err) {
-            console.error(err);
+   $scope.scan = function() {
+        $cordovaBarcodeScanner.scan().then(function(imageData) {
+            
+            scanned = true;
+            $scope.remoteURL = imageData.text;
+            console.log("Barcode Format -> " + imageData.format);
+            console.log("Cancelled -> " + imageData.cancelled);
+            
+        }, function(error) {
+            console.log("An error happened -> " + error);
         });
     };
+   
+   // Insert into table repo 
+//   var insert = function() {
+//        var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
+//        $cordovaSQLite.execute(db, query, [repo, nickname]).then(function(res) {
+//            console.log("INSERT ID -> " + res.insertId);
+//        }, function (err) {
+//            console.error(err);
+//        });
+//    };
     
 });
 
