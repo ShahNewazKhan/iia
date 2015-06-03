@@ -6,3 +6,6 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 
 Apache Cordova Dialog Plugin:
 cordova plugin add cordova-plugin-dialogs
+
+Apache Cordova Toast Plugin:
+cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git

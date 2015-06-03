@@ -37,6 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('app.addRepo', {
+    cache: false,
     url: "/addRepo",
     views: {
       'menuContent': {

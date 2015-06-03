@@ -75,7 +75,7 @@ angular.module('starter.controllers', [])
       });
     };
    
-   // Insert into table repo 
+//   Insert into table repo 
 //   var insert = function() {
 //        var query = "INSERT INTO repo (repo, nickname) VALUES (?,?)";
 //        $cordovaSQLite.execute(db, query, [repo, nickname]).then(function(res) {
