@@ -66,6 +66,15 @@ angular.module('starter.controllers', [])
             console.log("An error happened -> " + error);
         });
     };
+    
+    $scope.promptUrl = function(){
+      $cordovaDialogs.prompt('msg', 'title', ['btn 1','btn 2'], 'default text')
+      .then(function(result) {
+        var input = result.input1;
+        // no button = 0, 'OK' = 1, 'Cancel' = 2
+        var btnIndex = result.buttonIndex;
+      });
+    };
    
    // Insert into table repo 
 //   var insert = function() {
