@@ -23,6 +23,7 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'
     // SQLite DB
     db = $cordovaSQLite.openDB("iamon");
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS repo (id integer primary key, repo text, nickname text)");
+    //$cordovaSQLite.deleteDB("iamon");
   });
 });
 
@@ -48,22 +49,25 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('app.browse', {
+    cache: false,
     url: "/browse",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/browse.html",
+        controller: 'BrowseCtrl'
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
-        }
+  
+  .state('app.playlists', {
+    url: "/playlists",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/playlists.html",
+        controller: 'PlaylistsCtrl'
       }
-    })
+    }
+  })
 
   .state('app.single', {
     url: "/playlists/:playlistId",
