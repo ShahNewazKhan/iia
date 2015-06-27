@@ -46,7 +46,14 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
   
-  console.log($stateParams);
+  console.log($stateParams); 
+})
+
+.controller('DetailsCtrl', function($scope, $stateParams) {
+  
+  console.log($stateParams); 
+  
+  $scope.nickname = $stateParams;
  
 })
 
@@ -56,7 +63,7 @@ angular.module('starter.controllers', [])
   
   var getProjects = function() {
         
-        var query = "SELECT nickname FROM repo";
+        var query = "SELECT repo, nickname FROM repo";
         
         $cordovaSQLite.execute(db, query).then(function(res) {
             
@@ -65,6 +72,7 @@ angular.module('starter.controllers', [])
                   
                   var project = {};
                   project["nickname"] = res.rows.item(x).nickname;
+                  project["remote"] = res.rows.item(x).repo;
                   $scope.projects.push(project);
                 
                 }

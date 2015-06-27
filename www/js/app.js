@@ -24,6 +24,9 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'
     db = $cordovaSQLite.openDB("iamon");
     $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS repo (id integer primary key, repo text, nickname text)");
     //$cordovaSQLite.deleteDB("iamon");
+    
+    //Parse Init
+    Parse.initialize("HymbXJIgdgKl7i45sEXi29BsAvMXwomlkDgH2TC8", "Pc1PZWJHA4xvaZGSYEBW9K0XQhK6j5fSNTylhPz8");
   });
 });
 
@@ -55,6 +58,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
       'menuContent': {
         templateUrl: "templates/browse.html",
         controller: 'BrowseCtrl'
+      }
+    }
+  })
+  
+  .state('app.projDetails', {
+    cache: false,
+    url: "/project/:remoteUrl",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/projDetails.html",
+        controller: 'DetailsCtrl'
       }
     }
   })
