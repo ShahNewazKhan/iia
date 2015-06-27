@@ -18,6 +18,20 @@
 * Build project (ionic build ios || ionic build android)
 * Run project (ionic run android || ionic build ios)
 
+### Dependencies ###
+
+SQLite Cordova Plugin:
+cordova plugin add https://github.com/brodysoft/Cordova-SQLitePlugin.git
+
+Apache Cordova Barcode Scanner:
+cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
+
+Apache Cordova Dialog Plugin:
+cordova plugin add cordova-plugin-dialogs
+
+Apache Cordova Toast Plugin:
+cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
+
 ### Contribution guidelines ###
 
 * Writing tests [To be added]
